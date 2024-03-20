@@ -27,7 +27,10 @@ for i in range(n-1):
         x = backup_x
     x_list.append(x)
 
-plt.hist(x_list, bins=100, alpha=0.5, label='x')
+plt.hist(x_list, bins=100,density=True, alpha=0.5, label='x')
+x_data = jnp.linspace(-5, 5, 100)
+y_data = jnp.exp(-0.5 * x_data**2 ) / jnp.sqrt(2 * jnp.pi)  
+plt.plot(x_data, y_data, label='True', color='r')
 
 file_name = __file__.split('/')[-1].replace('.py', '')
 plt.savefig(f'{file_name}.png')
